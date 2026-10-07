@@ -1,0 +1,16 @@
+{
+  "name": "usage-meter",
+  "owner": { "name": "aaugmentum", "url": "https://github.com/aaugmentum" },
+  "metadata": { "description": "usage-meter: Claude plan usage, told to Claude and to you." },
+  "plugins": [
+    {
+      "name": "usage-meter",
+      "source": "./",
+      "description": "Tells Claude (and you) how much of the 5-hour and 7-day plan usage is left and when each window resets.",
+      "version": "0.1.0",
+      "author": { "name": "aaugmentum" },
+      "license": "MIT",
+      "keywords": ["usage", "rate-limit", "quota", "status-line"]
+    }
+  ]
+}
