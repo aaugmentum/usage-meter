@@ -17,14 +17,17 @@ New sessions load it.
   (in 1h28m). 7-day window 41% used (59% left), resets Mon 09:00 (in 4d18h).</usage-meter>`.
   The note goes at the end of the prompt, so the prompt cache stays warm.
 - **Nudges Claude when usage is high.** At 85% of the 5-hour window or 90% of the 7-day window, the
-  note asks Claude to avoid the most expensive models and extra subagents, keep steps small, and tell
-  you before starting any large task.
-- **Warns Claude mid-turn.** If a window crosses 90% or 95% while Claude is working, the note is
-  added to the running turn straight away.
+  note asks Claude to save usage: no extra subagents or the most expensive models unless you asked
+  for them, small direct steps, and a word with you before any large task.
+- **Warns Claude mid-turn.** If a window crosses 90% or 95% while Claude is working, the note joins
+  the running turn at its next model request. Each session is told once per threshold.
 - **Gives Claude a tool.** `mcp__usage-meter__usage` returns the current figures whenever Claude
   wants them, for example before a large fan-out.
-- **Shows you a status line**, `5h 63% · resets 16:00 (1h28m) · 7d 41%`, plus a one-time toast at
-  75%, 90% and 95% of each window. A leading `~` means the reading is more than 10 minutes old.
+- **Shows you a readout in the prompt footer**, after any mode labels: `5h 11% ↻19:50 · 7d 65%`.
+  Each window is green under 50%, yellow from 50% and red from 80%; `↻` is when the 5-hour window
+  resets, and a leading `~` means the reading is more than 10 minutes old. Each window also gets a
+  one-time toast at 75%, 90% and 95%. The footer readout is drawn in the terminal and the desktop
+  Code tab; VS Code and mobile get the note and the tool, but no readout.
 
 The figures come from Claude Code itself (`$.session.usage()` and the `session.measure` event). They
 are the ones the API reports with every response, so they include usage from your other sessions

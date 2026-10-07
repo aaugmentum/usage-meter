@@ -1,8 +1,12 @@
 {
   "name": "usage-meter",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Tells Claude (and you) how much of the 5-hour and 7-day plan usage is left and when each window resets.",
-  "author": { "name": "aaugmentum", "url": "https://github.com/aaugmentum" },
+  "types": "./types/index.d.ts",
+  "author": {
+    "name": "aaugmentum",
+    "url": "https://github.com/aaugmentum"
+  },
   "homepage": "https://github.com/aaugmentum/usage-meter",
   "license": "MIT"
 }
